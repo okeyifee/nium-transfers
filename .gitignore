@@ -1,2 +1,18 @@
 # IDE: IntelliJ IDEA
 .idea
+*.iml
+
+# Maven output folders
+target/
+test-output/
+
+# MacOS users (because they forget)
+**.DS_Store
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
