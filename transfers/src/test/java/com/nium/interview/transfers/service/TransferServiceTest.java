@@ -11,19 +11,18 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.runner.RunWith;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.runner.RunWith;
 
 import com.nium.interview.transfers.entity.Transfer;
 import com.tngtech.java.junit.dataprovider.DataProvider;
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;
 
-@SuppressWarnings("JUnitTestMethodWithNoAssertions")
 @RunWith(DataProviderRunner.class)
-public class TransferServiceTest {
+class TransferServiceTest {
 
 	static final double LONG_100 = 100.00;
 	static final double LONG_60 = 60.00;
