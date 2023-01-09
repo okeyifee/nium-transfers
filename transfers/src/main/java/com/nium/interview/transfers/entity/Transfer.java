@@ -18,3 +18,5 @@ public class Transfer {
 	private double amount;
 	private LocalDate date;
 	private String transferId;
+	
+}
