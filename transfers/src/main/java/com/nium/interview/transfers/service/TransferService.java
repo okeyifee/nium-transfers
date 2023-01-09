@@ -84,13 +84,11 @@ public class TransferService {
 	}
 
 	/**
-	 * @return Account with the highest Balance.
+	 * @return Account with the highest Balance. This is the first entry in map with maximum value. 
+	 * i.e. If Account1 has value 100 and Account2 has value 100, then Account1 will be returned.
 	 */
 	public String getAccountWithHighestBalance() {
-		// TODO : insertion order matters but it's been neglected here.... retrieval happens to be shifting always...
-		//		return accountBalanceMap.isEmpty() ? null : Collections.max(accountBalanceMap.entrySet(), Map.Entry.comparingByValue()).getKey();
-
-		log.info("map ---- {}", accountBalanceMap);
+		
 		return accountBalanceMap.entrySet().stream()
 			.max(Map.Entry.comparingByValue())
 			.map(Map.Entry::getKey)
@@ -99,6 +97,7 @@ public class TransferService {
 
 	/**
 	 * @return The Frequently used source bank account.
+	 * i.e. The most occurring bank account used as sourceAccount in the transfers record.
 	 */
 	public String getFrequentlyUsedSourceAccount() {
 
