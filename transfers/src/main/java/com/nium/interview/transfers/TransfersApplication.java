@@ -13,7 +13,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.nium.interview.transfers.exception.TransferException;
 import com.nium.interview.transfers.service.TransferService;
 
 import lombok.extern.log4j.Log4j2;
@@ -38,31 +37,23 @@ public class TransfersApplication implements CommandLineRunner {
 
 	@Override
 	public void run(final String... args) throws URISyntaxException, IOException {
-		// Below is some sample code to get you started. Good luck :)
 
 		if (args.length != 1) {
-			log.error("Please provide the path to a file as a command line argument.");
+			log.error("Please provide the name of the file as a command line argument.");
 			return;
 		}
 
 		final String fileName = args[0];
-
-		if (fileName.isBlank()) {
-			log.error("Failed to retrieve resource - fileName is null");
-			throw new TransferException("Failed to retrieve Resource.");
-		}
-
+		
 		final URL file = getClass().getClassLoader().getResource(fileName);
-
 		if (null == file) {
-			log.error("Failed to retrieve resource - {}", fileName);
-			throw new TransferException("Failed to retrieve Resource");
+			log.error("Resource with name '{}', not found.",  fileName);
+			return;
 		}
-
-		final TransferService transferService = new TransferService();
-		Files.readAllLines(Path.of(file.toURI())).forEach(transferService::saveTransferRecordInList);
 
 		final String lineSeparator = lineSeparator();
+		final TransferService transferService = new TransferService();
+		Files.readAllLines(Path.of(file.toURI())).forEach(transferService::saveTransferRecordInList);
 
 		out.println(lineSeparator + "#Balances");
 		transferService.calculateAccountBalance().forEach((key, value) -> out.printf("%s - %s%n", key, String.format("%.2f", value)));
@@ -70,5 +61,6 @@ public class TransfersApplication implements CommandLineRunner {
 			lineSeparator + "#Bank Account with highest balance" + lineSeparator + transferService.getAccountWithHighestBalance());
 		out.println(
 			lineSeparator + "#Frequently used source bank account" + lineSeparator + transferService.getFrequentlyUsedSourceAccount());
+
 	}
 }

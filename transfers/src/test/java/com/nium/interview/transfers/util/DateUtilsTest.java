@@ -29,7 +29,7 @@ class DateUtilsTest {
 			{ " 13/08/2055 ", LocalDate.of(YEAR, MONTH, DAY) },
 			{ "13/08/2055 ", LocalDate.of(YEAR, MONTH, DAY) },
 			{ "13-08-2055", LocalDate.of(YEAR, MONTH, DAY) },
-			{ null, null },
+			{ null, null }
 		};
 	}
 
