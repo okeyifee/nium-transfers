@@ -1,10 +1,7 @@
 # nium-transfers
 Nium Coding Challenge
 
-To be able to run this app, you need the following 
-Java 11
-An IDE e.g. intelliJ
-Maven
+To be able to run this app, you need to have Maven, Java 11 and An IDE e.g. intelliJ
 
 ## How to run
 To be able to run app, you need to first compile by executing the command below:
